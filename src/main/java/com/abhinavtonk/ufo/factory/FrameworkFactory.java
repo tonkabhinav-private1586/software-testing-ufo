@@ -2,7 +2,7 @@ package com.abhinavtonk.ufo.factory;
 
 import org.openqa.selenium.support.ui.Select;
 
-import com.abhinavtonk.ufo.automation.web.ISeleniumWebdriver;
+import com.abhinavtonk.ufo.automation.web.ISelenium;
 import com.abhinavtonk.ufo.automation.web.SeleniumWebDriver;
 import com.abhinavtonk.ufo.logging.ILogger;
 import com.abhinavtonk.ufo.reporting.IReporter;

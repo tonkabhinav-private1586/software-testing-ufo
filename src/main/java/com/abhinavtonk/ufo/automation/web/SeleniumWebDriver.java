@@ -1,5 +1,5 @@
 package com.abhinavtonk.ufo.automation.web;
 
-public class SeleniumWebDriver implements ISeleniumWebdriver{
+public class SeleniumWebDriver implements ISelenium{
 
 }
