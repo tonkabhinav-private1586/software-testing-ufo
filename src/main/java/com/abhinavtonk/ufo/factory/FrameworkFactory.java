@@ -1,9 +1,5 @@
 package com.abhinavtonk.ufo.factory;
 
-import com.abhinavtonk.ufo.automation.web.AutoIT;
-import com.abhinavtonk.ufo.automation.web.SeleniumWebDriver;
-import com.abhinavtonk.ufo.automation.web.Winium;
-import com.abhinavtonk.ufo.enums.AutomationTool;
 import com.abhinavtonk.ufo.enums.FrameworkLogger;
 import com.abhinavtonk.ufo.enums.FrameworkReporter;
 import com.abhinavtonk.ufo.logging.ILogger;
@@ -41,21 +37,6 @@ public class FrameworkFactory implements IFrameworkFactory{
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public <T> T getWebAutomationTool(AutomationTool webAutomationTool) {
-		switch(webAutomationTool){
-		case SELENIUM_WEBDRIVER:
-			return (T) new SeleniumWebDriver();
 
-		case AUTO_IT:
-			return (T) new AutoIT();
-
-		case WINIUM:
-			return (T) new Winium();
-
-		default:
-			return null;
-		}
-	}
 
 }

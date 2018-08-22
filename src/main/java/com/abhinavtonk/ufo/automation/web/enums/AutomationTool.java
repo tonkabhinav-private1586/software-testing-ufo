@@ -1,4 +1,4 @@
-package com.abhinavtonk.ufo.enums;
+package com.abhinavtonk.ufo.automation.web.enums;
 
 public enum AutomationTool {
 	SELENIUM_WEBDRIVER,
