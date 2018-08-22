@@ -1,7 +1,7 @@
 package com.abhinavtonk.ufo.automation.web.factory;
 
 import com.abhinavtonk.ufo.automation.web.AutoIT;
-import com.abhinavtonk.ufo.automation.web.SeleniumWebDriver;
+import com.abhinavtonk.ufo.automation.web.SeleniumWebdriver;
 import com.abhinavtonk.ufo.automation.web.Winium;
 import com.abhinavtonk.ufo.automation.web.enums.AutomationTool;
 
@@ -10,7 +10,7 @@ public class WebFactory implements IWebFactory{
 	public <T> T getWebAutomationTool(AutomationTool webAutomationTool) {
 		switch(webAutomationTool){
 		case SELENIUM_WEBDRIVER:
-			return (T) new SeleniumWebDriver();
+			return (T) new SeleniumWebdriver();
 
 		case AUTO_IT:
 			return (T) new AutoIT();
