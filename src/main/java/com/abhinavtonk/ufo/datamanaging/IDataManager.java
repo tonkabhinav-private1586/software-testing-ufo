@@ -6,8 +6,11 @@ package com.abhinavtonk.ufo.datamanaging;
  *
  */
 public interface IDataManager {
+	IDataManager getDataSourceHandle(String dataSource);
+	
 	@SuppressWarnings("unchecked")
-	//IDataManager populateData(String dataSource);
-	<S,T> S getData(T... t);
+	<U,T> U getData(T... t);
+	
+	//<T> T getData(T... t);
 	
 }

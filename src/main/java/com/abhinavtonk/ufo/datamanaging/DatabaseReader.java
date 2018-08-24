@@ -13,5 +13,11 @@ public class DatabaseReader implements IDataManager{
 		return null;
 	}
 
+	@Override
+	public IDataManager getDataSourceHandle(String dataSource) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

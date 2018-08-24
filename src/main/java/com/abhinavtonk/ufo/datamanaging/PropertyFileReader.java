@@ -37,6 +37,12 @@ public class PropertyFileReader implements IDataManager{
 		return (S) properties.getProperty((String) t[0]);
 	}
 
+	@Override
+	public IDataManager getDataSourceHandle(String dataSource) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 /*	public static void main(String[] args) {
 		HashSet<IDataManager> set = new HashSet<IDataManager>();
 		IDataManager frameworkConfiguration1 = new PropertyFileReader(System.getProperty("user.dir")+"\\src\\main\\resources\\roughPropertyFile.properties");
