@@ -7,9 +7,11 @@ public class DatabaseReader implements IDataManager{
 		return null;
 	}
 
-	public <T> T getData(T... t) {
+	@SuppressWarnings("unchecked")
+	public <S, T> S getData(T... t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
