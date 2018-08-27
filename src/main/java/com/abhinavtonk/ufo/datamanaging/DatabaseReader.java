@@ -2,22 +2,28 @@ package com.abhinavtonk.ufo.datamanaging;
 
 public class DatabaseReader implements IDataManager{
 
-	public IDataManager populateData(String dataSource) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	private DatabaseReader databaseReader;
+	private String filePath;
 
-	@SuppressWarnings("unchecked")
-	public <S, T> S getData(T... t) {
-		// TODO Auto-generated method stub
-		return null;
+	public DatabaseReader(String filePath){
+		this.filePath = filePath;
 	}
 
 	@Override
-	public IDataManager getDataSourceHandle(String dataSource) {
+	public IDataManager getDataSourceHandle() {
+		if(databaseReader == null){
+			databaseReader = new DatabaseReader(filePath);
+		}
+		return databaseReader;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <U, T> U getData(T... t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 
 }

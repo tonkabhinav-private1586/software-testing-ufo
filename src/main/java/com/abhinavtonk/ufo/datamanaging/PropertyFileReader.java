@@ -12,13 +12,16 @@ import java.util.Properties;
  */
 
 public class PropertyFileReader implements IDataManager{
-	Properties properties;
-	File file;
-	FileInputStream fis;
+	private Properties properties;
+	private File file;
+	private FileInputStream fis;
+	private String filePath;
+	private PropertyFileReader propertyFileReader;
 
 	public PropertyFileReader(String filePath){
+		this.filePath = filePath;
 		properties = new Properties();
-		file = new File(filePath);
+		file = new File(this.filePath);		
 		try {
 			fis = new FileInputStream(file);
 			properties.load(fis);
@@ -30,28 +33,32 @@ public class PropertyFileReader implements IDataManager{
 			e.printStackTrace();
 		}
 	}
-	
+
+	@Override
+	public IDataManager getDataSourceHandle() {
+		if(propertyFileReader==null)
+			propertyFileReader = new PropertyFileReader(filePath);
+
+		return propertyFileReader;
+	}
+
 	@Override
 	@SuppressWarnings("unchecked")
-	public <S,T> S getData(T... t) {		
-		return (S) properties.getProperty((String) t[0]);
+	public <U,T> U getData(T... t) {		
+		return (U) properties.getProperty((String) t[0]);
 	}
 
-	@Override
-	public IDataManager getDataSourceHandle(String dataSource) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-/*	public static void main(String[] args) {
-		HashSet<IDataManager> set = new HashSet<IDataManager>();
+
+	public static void main(String[] args) {
+		/*HashSet<IDataManager> set = new HashSet<IDataManager>();
 		IDataManager frameworkConfiguration1 = new PropertyFileReader(System.getProperty("user.dir")+"\\src\\main\\resources\\roughPropertyFile.properties");
-		IDataManager frameworkConfiguration2 = new PropertyFileReader(System.getProperty("user.dir")+"\\src\\main\\resources\\roughPropertyFile.properties");
+		//IDataManager frameworkConfiguration2 = new PropertyFileReader(System.getProperty("user.dir")+"\\src\\main\\resources\\roughPropertyFile.properties");
 
-		System.out.println(frameworkConfiguration1.getData("name"));
+		System.out.printf(frameworkConfiguration1.getData("name"));
 		set.add(frameworkConfiguration1);
 		set.add(frameworkConfiguration2);
-		System.out.println(set.size());
+		System.out.println(set.size());*/
 
-	}*/
+	}
 }
