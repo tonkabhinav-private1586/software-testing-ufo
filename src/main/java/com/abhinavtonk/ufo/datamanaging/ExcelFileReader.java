@@ -45,7 +45,7 @@ public class ExcelFileReader implements IDataManager{
 	}
 	
 	//@Override
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings({ "unchecked" })
 	public <U,T> U getData(T... t) {
 		
 		String sheetName = (String) t[0];
