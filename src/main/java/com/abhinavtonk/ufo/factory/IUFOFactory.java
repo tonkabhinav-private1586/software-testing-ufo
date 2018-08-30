@@ -9,12 +9,26 @@ import com.abhinavtonk.ufo.reporting.IReporter;
 
 public interface IUFOFactory {
 
-	ILogger getLogger(FrameworkLogger logger);
-	void setLogger(String logger);
+	void setFrameworkLogger(String frameworkLogger);
+	FrameworkLogger getFrameworkLogger();
 	
-	IReporter getReporter(FrameworkReporter reporter);
-	void setReporter(String reporter);
+	void setFrameworkReporter(String frameworkReporter);
+	FrameworkReporter getFrameworkReporter();
 	
-	IDataManager getDataSource(FrameworkDataSource dataSource, String sourcePath);
-	void setDataSource(String dataSource);
+	void setFrameworkDataSource(String frameworkDataSource);
+	FrameworkDataSource getFrameworkDataSource();
+	
+	void setLogger(FrameworkLogger frameworkLogger);
+	ILogger getLogger();
+	
+	void setReporter(FrameworkReporter frameworkReporter);
+	IReporter getReporter();
+	
+	void setDataManager(FrameworkDataSource frameworkDataSource, String dataManagerFilePath);
+	IDataManager getDataManager();
+	
+	void setDataManagerFilePath(String dataManagerFilePath);
+	String getDataManagerFilePath();
+	
+	
 }

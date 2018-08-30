@@ -10,7 +10,7 @@ public class DatabaseReader implements IDataManager{
 	}
 
 	@Override
-	public IDataManager getDataSourceHandle() {
+	public DatabaseReader getDataSourceHandle() {
 		if(databaseReader == null){
 			databaseReader = new DatabaseReader(filePath);
 		}

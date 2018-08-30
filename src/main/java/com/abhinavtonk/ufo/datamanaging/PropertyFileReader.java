@@ -35,7 +35,7 @@ public class PropertyFileReader implements IDataManager{
 	}
 
 	@Override
-	public IDataManager getDataSourceHandle() {
+	public PropertyFileReader getDataSourceHandle() {
 		if(propertyFileReader==null)
 			propertyFileReader = new PropertyFileReader(filePath);
 

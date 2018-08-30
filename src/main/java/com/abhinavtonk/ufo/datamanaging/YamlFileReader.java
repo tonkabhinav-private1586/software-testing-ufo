@@ -10,7 +10,7 @@ public class YamlFileReader implements IDataManager{
 	}
 
 	@Override
-	public IDataManager getDataSourceHandle() {
+	public YamlFileReader getDataSourceHandle() {
 		// TODO Auto-generated method stub
 		return null;
 	}

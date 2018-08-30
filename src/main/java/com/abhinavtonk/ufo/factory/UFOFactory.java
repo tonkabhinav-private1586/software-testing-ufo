@@ -16,73 +16,51 @@ import com.abhinavtonk.ufo.reporting.ReportNGReporter;
 import com.abhinavtonk.ufo.reporting.TestNGReporter;
 
 public class UFOFactory implements IUFOFactory{
-	public FrameworkLogger frameworkLogger;
-	public FrameworkReporter frameworkReporter;
-	public FrameworkDataSource frameworkDataSource;
-
-	@Override
-	public ILogger getLogger(FrameworkLogger frameworkLogger) {
-		switch(frameworkLogger){
-		case LOG4J:
-			return new Log4jLogger();
-
-		default:
-			return null;
-		}
-	}
+	
+	private FrameworkLogger frameworkLogger;
+	private FrameworkReporter frameworkReporter;
+	private FrameworkDataSource frameworkDataSource;
+	
+	private ILogger logger;
+	private IReporter reporter;
+	private IDataManager dataManager;
+	
+	private String dataManagerFilePath;
 	
 	@Override
-	public void setLogger(String frameworkLogger) {
-		// TODO Auto-generated method stub
+	public void setFrameworkLogger(String frameworkLogger) {
 		if(frameworkLogger.equalsIgnoreCase("log4j")){
 			this.frameworkLogger = FrameworkLogger.LOG4J;
 		}
 		// TODO
 		//else if()
 		
+	}
+	
+	@Override
+	public FrameworkLogger getFrameworkLogger() {
+		return frameworkLogger;
+	}
+	
+	@Override
+	public void setFrameworkReporter(String frameworkReporter) {
+		if(frameworkReporter.equalsIgnoreCase("reportng reporter"))
+			this.frameworkReporter = FrameworkReporter.REPORT_NG_REPORTER;
 		
-	}
-
-	@Override
-	public IReporter getReporter(FrameworkReporter frameworkReporter) {
-		switch(frameworkReporter){
-		case REPORT_NG_REPORTER:
-			return new ReportNGReporter();
-
-		case HTML_REPORTER:
-			return new HtmlReporter();
-
-		case TESTNG_REPORTER:
-			return new TestNGReporter();
-
-		default:
-			return null;
-		}
+		else if(frameworkReporter.equalsIgnoreCase("html reporter"))
+			this.frameworkReporter = FrameworkReporter.HTML_REPORTER;
+		
+		else if(frameworkReporter.equalsIgnoreCase("testng reporter"))
+			this.frameworkReporter = FrameworkReporter.TESTNG_REPORTER;
 	}
 	
 	@Override
-	public IDataManager getDataSource(FrameworkDataSource frameworkDataSource, String sourcePath) {
-		switch(frameworkDataSource){
-		case EXCEL_FILE:
-			return new ExcelFileReader(sourcePath);
-
-		case PROPERTIES_FILE:
-			return new PropertyFileReader(sourcePath);
-
-		case YAML_FILE:
-			return new YamlFileReader(sourcePath);
-
-		case DATABASE:
-			return new DatabaseReader(sourcePath);
-			
-		default:
-			return null;
-		}
+	public FrameworkReporter getFrameworkReporter() {
+		return frameworkReporter;
 	}
 	
 	@Override
-	public void setDataSource(String frameworkDataSource) {
-		// TODO Auto-generated method stub
+	public void setFrameworkDataSource(String frameworkDataSource) {
 		if(frameworkDataSource.equalsIgnoreCase("properties file")){
 			this.frameworkDataSource = FrameworkDataSource.PROPERTIES_FILE;
 		}
@@ -95,18 +73,89 @@ public class UFOFactory implements IUFOFactory{
 		else if(frameworkDataSource.equalsIgnoreCase("db")){
 			this.frameworkDataSource = FrameworkDataSource.DATABASE;
 		}
+		
+	}
+	
+	@Override
+	public FrameworkDataSource getFrameworkDataSource() {
+		return frameworkDataSource;
 	}
 
-
-
+	
 	@Override
-	public void setReporter(String frameworkReporter) {
-		// TODO Auto-generated method stub
+	public void setLogger(FrameworkLogger frameworkLogger) {
+
+		switch(frameworkLogger){
+		case LOG4J:
+			this.logger = new Log4jLogger();
+			
+			//TODO more cases
+		}
 		
 	}
 
+	@Override
+	public ILogger getLogger() {
+		return logger;
+	}
 
+	@Override
+	public void setReporter(FrameworkReporter frameworkReporter) {
+		switch(frameworkReporter){
+		case REPORT_NG_REPORTER:
+			this.reporter =  new ReportNGReporter();
 
+		case HTML_REPORTER:
+			this.reporter = new HtmlReporter();
 
+		case TESTNG_REPORTER:
+			this.reporter = new TestNGReporter();
 
+		default:
+			this.reporter =	 null;
+		}
+		
+	}
+
+	@Override
+	public IReporter getReporter() {
+		return reporter;
+	}
+
+	@Override
+	public void setDataManager(FrameworkDataSource frameworkDataSource, String dataManagerFilePath) {
+		switch(frameworkDataSource){
+		case EXCEL_FILE:
+			this.dataManager= new ExcelFileReader(dataManagerFilePath);
+
+		case PROPERTIES_FILE:
+			this.dataManager = new PropertyFileReader(dataManagerFilePath);
+
+		case YAML_FILE:
+			this.dataManager = new YamlFileReader(dataManagerFilePath);
+
+		case DATABASE:
+			this.dataManager = new DatabaseReader(dataManagerFilePath);
+			
+		default:
+			this.dataManager = null;
+		}
+		
+	}
+
+	@Override
+	public IDataManager getDataManager() {
+		return dataManager;
+	}
+
+	@Override
+	public void setDataManagerFilePath(String dataManagerFilePath) {
+		this.dataManagerFilePath = dataManagerFilePath;		
+	}
+
+	@Override
+	public String getDataManagerFilePath() {
+		return dataManagerFilePath;
+	}
 }
+
