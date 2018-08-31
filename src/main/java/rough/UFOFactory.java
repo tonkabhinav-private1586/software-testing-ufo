@@ -6,8 +6,8 @@ import com.abhinavtonk.ufo.datamanaging.IDataManager;
 import com.abhinavtonk.ufo.datamanaging.PropertyFileReader;
 import com.abhinavtonk.ufo.datamanaging.YamlFileReader;
 import com.abhinavtonk.ufo.enums.FrameworkDataSource;
-import com.abhinavtonk.ufo.enums.FrameworkLogger;
-import com.abhinavtonk.ufo.enums.FrameworkReporter;
+import com.abhinavtonk.ufo.enums.FrameworkLoggingTool;
+import com.abhinavtonk.ufo.enums.FrameworkReportingTool;
 import com.abhinavtonk.ufo.logging.ILogger;
 import com.abhinavtonk.ufo.logging.Log4jLogger;
 import com.abhinavtonk.ufo.reporting.HtmlReporter;
@@ -17,8 +17,8 @@ import com.abhinavtonk.ufo.reporting.TestNGReporter;
 
 public class UFOFactory implements IUFOFactory{
 	
-	private FrameworkLogger frameworkLogger;
-	private FrameworkReporter frameworkReporter;
+	private FrameworkLoggingTool frameworkLogger;
+	private FrameworkReportingTool frameworkReporter;
 	private FrameworkDataSource frameworkDataSource;
 	
 	private ILogger logger;
@@ -30,7 +30,7 @@ public class UFOFactory implements IUFOFactory{
 	@Override
 	public void setFrameworkLogger(String frameworkLogger) {
 		if(frameworkLogger.equalsIgnoreCase("log4j")){
-			this.frameworkLogger = FrameworkLogger.LOG4J;
+			this.frameworkLogger = FrameworkLoggingTool.LOG4J;
 		}
 		// TODO
 		//else if()
@@ -38,24 +38,24 @@ public class UFOFactory implements IUFOFactory{
 	}
 	
 	@Override
-	public FrameworkLogger getFrameworkLogger() {
+	public FrameworkLoggingTool getFrameworkLogger() {
 		return frameworkLogger;
 	}
 	
 	@Override
 	public void setFrameworkReporter(String frameworkReporter) {
 		if(frameworkReporter.equalsIgnoreCase("reportng reporter"))
-			this.frameworkReporter = FrameworkReporter.REPORT_NG_REPORTER;
+			this.frameworkReporter = FrameworkReportingTool.REPORT_NG_REPORTER;
 		
 		else if(frameworkReporter.equalsIgnoreCase("html reporter"))
-			this.frameworkReporter = FrameworkReporter.HTML_REPORTER;
+			this.frameworkReporter = FrameworkReportingTool.HTML_REPORTER;
 		
 		else if(frameworkReporter.equalsIgnoreCase("testng reporter"))
-			this.frameworkReporter = FrameworkReporter.TESTNG_REPORTER;
+			this.frameworkReporter = FrameworkReportingTool.TESTNG_REPORTER;
 	}
 	
 	@Override
-	public FrameworkReporter getFrameworkReporter() {
+	public FrameworkReportingTool getFrameworkReporter() {
 		return frameworkReporter;
 	}
 	
@@ -83,7 +83,7 @@ public class UFOFactory implements IUFOFactory{
 
 	
 	@Override
-	public void setLogger(FrameworkLogger frameworkLogger) {
+	public void setLogger(FrameworkLoggingTool frameworkLogger) {
 
 		switch(frameworkLogger){
 		case LOG4J:
@@ -100,7 +100,7 @@ public class UFOFactory implements IUFOFactory{
 	}
 
 	@Override
-	public void setReporter(FrameworkReporter frameworkReporter) {
+	public void setReporter(FrameworkReportingTool frameworkReporter) {
 		switch(frameworkReporter){
 		case REPORT_NG_REPORTER:
 			this.reporter =  new ReportNGReporter();

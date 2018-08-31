@@ -1,6 +1,6 @@
 package com.abhinavtonk.ufo.enums;
 
-public enum FrameworkLogger {
+public enum FrameworkLoggingTool {
 	LOG4J
 	;
 
