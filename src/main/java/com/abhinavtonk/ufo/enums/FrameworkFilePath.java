@@ -1,11 +1,11 @@
 package com.abhinavtonk.ufo.enums;
 
-public enum FrameworkFilePaths {
+public enum FrameworkFilePath {
 	FRAMEWORK_PROPERTIES_FILE_PATH(System.getProperty("user.dir")+ "\\src\\main\\resources\\ufo.properties");
 	
 	private String value;
 
-	FrameworkFilePaths(String value){
+	FrameworkFilePath(String value){
 		this.value = value;
 	}
 

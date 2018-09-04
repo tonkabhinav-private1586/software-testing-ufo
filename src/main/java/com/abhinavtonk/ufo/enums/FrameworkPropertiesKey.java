@@ -1,9 +1,9 @@
 package com.abhinavtonk.ufo.enums;
 
-import com.abhinavtonk.ufo.UFOBase;
+import com.abhinavtonk.ufo.FrameworkBase;
 import com.abhinavtonk.ufo.datamanaging.IDataManager;
 
-public enum FrameworkProperties {
+public enum FrameworkPropertiesKey {
 
 	LOGGER(getFrameworkProperties().getData("logger")),
 	REPORTER(getFrameworkProperties().getData("reporter")),
@@ -12,9 +12,9 @@ public enum FrameworkProperties {
 	;
 
 	private String value;
-	private static UFOBase ufoBase;
+	private static FrameworkBase frameworkBase;
 
-	FrameworkProperties(String value){
+	FrameworkPropertiesKey(String value){
 		this.value = value;
 	}
 
@@ -23,9 +23,9 @@ public enum FrameworkProperties {
 	}
 
 	public static IDataManager getFrameworkProperties(){
-		if(ufoBase==null){
-			ufoBase = new UFOBase();
+		if(frameworkBase==null){
+			frameworkBase = new FrameworkBase();
 		}
-		return ufoBase.getFrameworkProperties();
+		return frameworkBase.getFrameworkProperties();
 	}
 }

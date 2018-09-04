@@ -15,7 +15,7 @@ import com.abhinavtonk.ufo.reporting.IReporter;
 import com.abhinavtonk.ufo.reporting.ReportNGReporter;
 import com.abhinavtonk.ufo.reporting.TestNGReporter;
 
-public class UFOFactory implements IUFOFactory{
+public class FrameworkFactory implements IFrameworkFactory{
 
 	public FrameworkLoggingTool frameworkLoggingTool;
 	public FrameworkReportingTool frameworkReportingTool;

@@ -1,35 +1,35 @@
 package com.abhinavtonk.ufo;
 
 import com.abhinavtonk.ufo.datamanaging.IDataManager;
-import com.abhinavtonk.ufo.enums.FrameworkFilePaths;
-import com.abhinavtonk.ufo.enums.FrameworkProperties;
-import com.abhinavtonk.ufo.factory.UFOFactory;
+import com.abhinavtonk.ufo.enums.FrameworkFilePath;
+import com.abhinavtonk.ufo.enums.FrameworkPropertiesKey;
+import com.abhinavtonk.ufo.factory.FrameworkFactory;
 import com.abhinavtonk.ufo.logging.ILogger;
 import com.abhinavtonk.ufo.reporting.IReporter;
 
-public class UFOBase implements IUFOBase{
-	private UFOFactory ufoFactory;
+public class FrameworkBase implements IFrameworkBase{
+	private FrameworkFactory frameworkFactory;
 	
 	private IDataManager frameworkProperties;	
 	private ILogger logger;
 	private IReporter reporter;
 	
 	public void startUFO(){
-		ufoFactory  = new UFOFactory();
+		frameworkFactory  = new FrameworkFactory();
 		
-		ufoFactory.setFrameworkDataSource(FrameworkProperties.DATA_SOURCE.getValue());
+		frameworkFactory.setFrameworkDataSource(FrameworkPropertiesKey.DATA_SOURCE.getValue());
 		
 		// 1
-		frameworkProperties = ufoFactory.getDataManager(ufoFactory.getFrameworkDataSource(), FrameworkFilePaths.FRAMEWORK_PROPERTIES_FILE_PATH.getValue());
+		frameworkProperties = frameworkFactory.getDataManager(frameworkFactory.getFrameworkDataSource(), FrameworkFilePath.FRAMEWORK_PROPERTIES_FILE_PATH.getValue());
 		
-		ufoFactory.setFrameworkLoggingTool(FrameworkProperties.LOGGER.getValue());
-		ufoFactory.setFrameworkReportingTool(FrameworkProperties.REPORTER.getValue());
+		frameworkFactory.setFrameworkLoggingTool(FrameworkPropertiesKey.LOGGER.getValue());
+		frameworkFactory.setFrameworkReportingTool(FrameworkPropertiesKey.REPORTER.getValue());
 		
 		// 2
-		logger = ufoFactory.getLogger(ufoFactory.getFrameworkLoggingTool());
+		logger = frameworkFactory.getLogger(frameworkFactory.getFrameworkLoggingTool());
 		
 		// 3
-		reporter = ufoFactory.getReporter(ufoFactory.getFrameworkReportingTool());
+		reporter = frameworkFactory.getReporter(frameworkFactory.getFrameworkReportingTool());
 	}
 	
 	public IDataManager getFrameworkProperties() {

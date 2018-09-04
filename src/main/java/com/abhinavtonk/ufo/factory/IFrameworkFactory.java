@@ -7,7 +7,7 @@ import com.abhinavtonk.ufo.enums.FrameworkReportingTool;
 import com.abhinavtonk.ufo.logging.ILogger;
 import com.abhinavtonk.ufo.reporting.IReporter;
 
-public interface IUFOFactory {
+public interface IFrameworkFactory {
 
 	ILogger getLogger(FrameworkLoggingTool frameworkLoggingTool);
 	
